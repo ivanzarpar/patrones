@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<link rel="stylesheet" href="../css/screen.css" type="text/css" media="all">
+
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+  <meta charset="UTF-8">
+
+<xsl:template match="/">
+  <html>
+    <head>
+      <title>Fachada</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      
+
+
+      
+    </head>
+  <body>
+<p><a href="../index.html">Volver a la pagina principal</a></p>
+  	<h1>Fachada</h1>
+
+	<h3>¿Qué es?</h3>
+	<p>Se trata de un patrón que <strong>simplifica la comunicación entre una clase y otra</strong> clase compleja, o bien otro subsistema de clases. En otras palabras, hace más simple el interface de comunicación entre dos objetos.</p>
+	<h3>¿Cuándo se aplica?</h3>
+	<p>Podemos hablar de muchos supuestos en los que sería muy útil aplicar el patrón de diseño de tipo Fachada, entre los que podemos enumerar los siguientes:</p>
+		<p>
+		<ul>
+			<li>El sistema cliente tiene que acceder a parte de la funcionalidad de un sistema complejo.
+			</li>
+			<li>Hay tareas o configuraciones muy frecuentes y es conveniente simplificar el código de uso.
+			</li>
+			<li>Necesitamos hacer que una librería sea más legible.
+			</li>
+			<li>Nuestros sistemas clientes tienen que acceder a varias APIs y queremos simplificar dicho acceso.
+			</li>	
+		</ul>
+		</p>
+	<h3>Funcionalidad</h3>
+	<p>Una clase que use el patrón de diseño Fachada proporciona la funcionalidad de manera sencilla a un sistema. Dicha clase utilizará la clase compleja o los distintos componentes de los sistemas requeridos y los ofrecerá por medio de operaciones más simples.</p>
+	<h3>Inmutabilidad</h3>
+	<p>Como bien explica el experto Cecilio Álvarez, una de las ventajas de este patrón es que <strong>no cambia aunque cambiemos de lenguaje</strong> de programación.</p>
+	<h3>Ejemplo.</h3>
+	<p>El volumen <em>Entornos de Desarrollo</em> de la editorial Ra-Ma ofrece un claro ejemplo de una clase que utiliza este patrón de desarrollo. Es el siguiente:</p>
+
+	<p><strong>public class Fachada</strong>{</p>
+	<p>private Memoria mem= new Memoria();</p>
+	<p>private DiscoDuro dd = new DiscoDuro();</p>
+	<p>private Procesador cpu = new Procesador();</p>
+
+	<p>public void abrirArchivo (String archivo){</p>
+		<p>mem.cargar(dd.getDireccion(archivo));</p>
+		<p>cpu.asignarProceso(mem.get.PosUltimaCarga());
+	}
+	}</p>
+
+	<p><strong>public class Memoria</strong>{</p>
+		<p>public Memoria(){}</p>
+		<p>public void cargar (String direccion){</p>
+		<p>/* ...*/}</p>
+		<p>public MemPos getPosUltimaCarga(){ /* ...*/}
+	}</p>
+
+	<p><strong>public class DiscoDuro</strong>{</p>
+		<p>public DiscoDuro(){}</p>
+		<p>public void getDireccion() {/* ... */}
+	}</p>
+	<p><strong>public class Procesador</strong>{</p>
+		<p>public Procesador(){}</p>
+		<p>public void asignarProceso(MemPos posicion){ /* ... */}
+	}</p>
+
+	<p>Como se puede observar en este ejemplo, se combinan y metodizan las diferentes rutinas que se tienen que hacer para llevar a cabo una operación concreta. Así, se agrupan las diferentes operaciones para simplificarlas y <strong>solo necesitar de una llamada</strong> para realizar un cúmulo de acciones que conllevan la operación que se neecsitan.</p>
+	<p>Gracias a haber utilizado el patrón de diseño Fachada, si se desea abrir un archivo <strong>no se necesita instanciar las tres clases</strong> y realizar las llamadas para abrir el archivo; solo habrá que invocar al método abrirArchivo de la clase Fachada.</p>
+	<p>En la siguiente imagen se puede observar un ejemplo gráfico muy sencillo de este patrón de diseño.</p>
+	<p><img src="../img/fachada01.png" alt="Ejemplo Fachada"/>
+	<h3>Bibliografía</h3>
+		<ol>
+			<li><em>Entornos de Desarrollo</em>. Editorial Ra Ma. Carlos Casado Iglesias.</li>
+			<li><a href="https://programacion.net/articulo/patrones_de_diseno_xi_patrones_estructurales_facade_1014">programacion.net</a></li>
+			<li><a href="https://reactiveprogramming.io/blog/es/patrones-de-diseno/facade">reactive programming</a></li>
+			<li><a href="https://www.genbeta.com/desarrollo/diseno-con-patrones-y-fachadas">genbeta</a></li>
+			<li><a href="http://www.juntadeandalucia.es/servicios/madeja/contenido/recurso/189">Junta de Andalucía</a></li>
+			<li><a href="https://odraudek99.wordpress.com/2012/04/07/facade">Imagen de ejemplo</a></li>
+		</ol>
+	
+
+
+
+
+</body>
+
+  </html>
+</xsl:template>
+</xsl:stylesheet>
